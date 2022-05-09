@@ -1,5 +1,12 @@
-const app = require('./src/app');
 
-const APP_PORT = 3000;
+const express = require('express');
 
-app.listen(APP_PORT, () => console.log(`Cats app is listening on localhost:${APP_PORT}`))
+const app = express();
+
+app.use(express.json());
+
+app.post('/cats', (req, res) => {
+    res.status(201).send(req.body);
+});
+
+module.exports = app;
